@@ -105,16 +105,9 @@ def do_purchase(email, password, product_url, cvv):
                 continue_to_payment_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test="continue-to-payment"]')))
                 continue_to_payment_button.click()
 
-                # Find the iframe element and interact with it
-                iframe_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'iframe[title="secure payment field"]')))
-                driver.switch_to.frame(iframe_element)
-
                 # Fill in the CV2
-                cvv_field = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'input[id="securityCode"]')))
+                cvv_field = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'input[formcontrolname="cvv"]')))
                 cvv_field.send_keys(cvv)
-
-                # Switches back to normal content outside of iframe
-                driver.switch_to.default_content()
 
                 # Find Confirm button and click it
                 confirm_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test="confirm-card"]')))
@@ -130,17 +123,7 @@ def do_purchase(email, password, product_url, cvv):
                 pay_now = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-test="pay-now"]')))
                 pay_now.click()
 
-                # Wait for the Iframe to become visible
-                iframe = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "iframe[id='Cardinal-CCA-IFrame']")))
-
-                # Switch to the iframe
-                driver.switch_to.frame(iframe)
-
-                # Wait for the iframe to be no longer present on the page
-                WebDriverWait(driver, 10).until(EC.invisibility_of_element_located((By.ID, "Cardinal-CCA-IFrame")))
-
-                # Switch back to the main page
-                driver.switch_to.default_content()
+                time.sleep(20)
 
                 # Perform actions after successful payment confirmation
                 print("Payment successful!")

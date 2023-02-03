@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import PurchaseForm
-from .scalper import do_purchase
+from .game import do_purchase
 
 def homepage_view(request):
     form = PurchaseForm()
