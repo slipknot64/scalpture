@@ -1,23 +1,17 @@
 import os
 import time
+import subprocess
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from seleniumwire import webdriver as wire_webdriver
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
-# No change needed, as the path to chromedriver is not required on PythonAnywhere
-options = webdriver.ChromeOptions()
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument("--headless")
-options.add_argument("--disable-gpu")
-
-os.environ["webdriver.chrome.driver"] = "/home/slipknot100/slipknot100.pythonanywhere.com/scalpture/chromedriver.exe"
+driver_process = subprocess.Popen(["C:/Users/adil-/Downloads/game/scalpture/chromedriver.exe"])
 
 def do_purchase(product_url, first_name, last_name, street_address, zip_code, city, state, email, phone_number, card_number, expiration_date, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = wire_webdriver.Chrome(options=options)
+    driver = webdriver.Remote(command_executor='http://127.0.0.1:9515')
 
     while True:
         try:
