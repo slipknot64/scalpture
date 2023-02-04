@@ -4,17 +4,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from webdriver_manager.chrome import ChromeDriverManager
 import time
 import subprocess
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+# No change needed, as the path to chromedriver is not required on PythonAnywhere
+options = webdriver.ChromeOptions()
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--headless')
 
 driver_process = subprocess.Popen(["C:/Users/adil-/Downloads/game/scalpture/chromedriver.exe"]) #start chrome driver
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://127.0.0.1:9515')
+    driver = webdriver.Chrome(options=options)
     while True:
         try:
             # Navigate to the website you want to scrape product page
