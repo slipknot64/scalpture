@@ -7,31 +7,26 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 
-# Use the path to the Firefox binary in the PythonAnywhere environment
-firefox_binary_path = "/usr/bin/firefox"
+chromedriver_path = 'Downloads/chromedriver_win32/'
 
-# Use the path to the GeckoDriver in the PythonAnywhere environment
-geckodriver_path = "/usr/local/bin/geckodriver"
-
-if os.path.exists(geckodriver_path):
-    # Create a webdriver instance for Firefox
-    driver = webdriver.Firefox(firefox_binary=firefox_binary_path, executable_path=geckodriver_path)
+if os.path.exists(chromedriver_path):
+    driver = webdriver.Chrome(executable_path=chromedriver_path)
 else:
-    print("GeckoDriver is not installed on this machine.")
+    print("ChromeDriver is not installed on this machine.")
 
 try:
     r = requests.get("http://localhost:9515")
     if r.status_code == 200:
-        print("GeckoDriver has started.")
+        print("ChromeDriver has started.")
         # Run your script here
     else:
-        print("GeckoDriver is not running.")
+        print("ChromeDriver is not running.")
 except requests.exceptions.ConnectionError:
-    print("GeckoDriver is not running.")
+    print("ChromeDriver is not running.")
     
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Firefox(firefox_binary=firefox_binary_path, executable_path=geckodriver_path)
+    driver = webdriver.Chrome(chromedriver_path)
     while True:
         try:
             # Navigate to the website you want to scrape product page
