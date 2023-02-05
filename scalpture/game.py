@@ -1,32 +1,16 @@
 import os
 import requests
 from selenium import webdriver
+import chromedriver_binary  # Adds chromedriver binary to path
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
-
-chromedriver_path = 'Downloads/chromedriver_win32/'
-
-if os.path.exists(chromedriver_path):
-    driver = webdriver.Chrome(executable_path=chromedriver_path)
-else:
-    print("ChromeDriver is not installed on this machine.")
-
-try:
-    r = requests.get("http://localhost:9515")
-    if r.status_code == 200:
-        print("ChromeDriver has started.")
-        # Run your script here
-    else:
-        print("ChromeDriver is not running.")
-except requests.exceptions.ConnectionError:
-    print("ChromeDriver is not running.")
     
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Chrome(chromedriver_path)
+    driver = webdriver.Chrome()
     while True:
         try:
             # Navigate to the website you want to scrape product page
