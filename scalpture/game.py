@@ -4,9 +4,31 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from seleniumwire import webdriver as wire_webdriver
 import time
+import platform
+import requests
+import zipfile
 
+
+# Get the username
+username = "slipknot100" # Replace with your PythonAnywhere username
+
+# Get the latest version of ChromeDriver from the official website
+url = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
+version = requests.get(url).text
+url = f"https://chromedriver.storage.googleapis.com/{version}/chromedriver_win64.zip"
+
+# Download and extract the ZIP file
+response = requests.get(url)
+filename = f"/home/{username}/chromedriver.zip"
+with open(filename, "wb") as f:
+    f.write(response.content)
+with zipfile.ZipFile(filename, "r") as zip_ref:
+    zip_ref.extractall(f"/home/{username}")
+
+# Set the ChromeDriver path
+chromedriver_path = f"/home/{username}/chromedriver.exe"
+    
 # No change needed, as the path to chromedriver is not required on PythonAnywhere
 options = webdriver.ChromeOptions()
 options.add_argument('--no-sandbox')
@@ -14,11 +36,11 @@ options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--headless")
 options.add_argument("--disable-gpu")
 
-os.environ["webdriver.chrome.driver"] = "/home/slipknot100/slipknot100.pythonanywhere.com/scalpture/chromedriver.exe"
+os.environ["webdriver.chrome.driver"] = chromedriver_path
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = wire_webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(chromedriver_path)
     while True:
         try:
             # Navigate to the website you want to scrape product page
