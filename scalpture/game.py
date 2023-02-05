@@ -1,7 +1,5 @@
 import os
-import platform
 import requests
-import zipfile
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,35 +7,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
 
-# Get the latest version of ChromeDriver from the official website
-url = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
-version = requests.get(url).text
+chromedriver_path = 'Downloads/chromedriver_win32/'
 
-system = platform.system().lower()
-if system == "windows":
-    archive_name = "chromedriver_win32.zip"
-elif system == "linux":
-    archive_name = "chromedriver_linux64.zip"
+if os.path.exists(chromedriver_path):
+    driver = webdriver.Chrome(executable_path=chromedriver_path)
 else:
-    archive_name = "chromedriver_mac64.zip"
+    print("ChromeDriver is not installed on this machine.")
 
-url = f"https://chromedriver.storage.googleapis.com/{version}/{archive_name}"
-
-# Download and extract the ZIP file
-home_dir = os.environ['HOME']
-filename = os.path.join(home_dir, "chromedriver.zip")
-chromedriver_path = os.path.join(home_dir, "chromedriver")
-
-system = platform.system().lower()
-if system == "windows":
-    archive_name = "chromedriver_win32.zip"
-elif system == "linux":
-    archive_name = "chromedriver_linux64.zip"
-else:
-    archive_name = "chromedriver_mac64.zip"
-
-url = f"https://chromedriver.storage.googleapis.com/{version}/{archive_name}"
-
+try:
+    r = requests.get("http://localhost:9515")
+    if r.status_code == 200:
+        print("ChromeDriver has started.")
+        # Run your script here
+    else:
+        print("ChromeDriver is not running.")
+except requests.exceptions.ConnectionError:
+    print("ChromeDriver is not running.")
+    
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
     driver = webdriver.Chrome(chromedriver_path)
