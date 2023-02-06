@@ -1,7 +1,6 @@
 import os
 import requests
 from selenium import webdriver
-import chromedriver_binary  # Adds chromedriver binary to path
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,7 +9,7 @@ import time
     
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://159.65.50.118:9515/wd/hub', desired_capabilities={
+    driver = webdriver.Remote(command_executor='http://https://starfish-app-798xe.ondigitalocean.app:9515/wd/hub', desired_capabilities={
     "browserName": "chrome",
   })
     while True:
