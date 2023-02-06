@@ -1,17 +1,22 @@
 import os
 import requests
+from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import time
-    
+
+display = Display(visible=0, size=(800, 600))
+display.start()
+
+options = webdriver.ChromeOptions()
+options.add_argument('--no-sandbox')
+
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://https://starfish-app-798xe.ondigitalocean.app:9515/wd/hub', desired_capabilities={
-    "browserName": "chrome",
-  })
+    driver = webdriver.Chrome(chrome_options=options)
     while True:
         try:
             # Navigate to the website you want to scrape product page
