@@ -15,7 +15,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 import os
-import sys
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,7 +92,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'scalpture',
             'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'PASSWORD': os.environ.get('DB_PASS'),
             'HOST': 'localhost',
             'PORT': '',
         }
