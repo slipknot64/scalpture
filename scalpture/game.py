@@ -146,8 +146,6 @@ def do_purchase(email, password, product_url, cvv):
                     # Print the exception message
                     print(e)
 
-        driver.quit()
-
         # When you're done, uncomment below code to stop the ChromeDriver process
         #driver_process.kill()
 
