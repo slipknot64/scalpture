@@ -1,0 +1,1 @@
+/home/adil/scalpture/scalpture/chromedriver &
