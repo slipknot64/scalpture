@@ -24,6 +24,6 @@ chromedriver_dir = os.path.join(program_files, "ChromeDriver")
 os.makedirs(chromedriver_dir, exist_ok=True)
 
 # Write the binary to disk
-chromedriver_path = os.path.join(chromedriver_dir, "chromedriver.exe")
+chromedriver_path = os.path.join(chromedriver_dir, "chromedriver")
 with open(chromedriver_path, "wb") as f:
     f.write(response.content)
