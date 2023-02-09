@@ -10,7 +10,7 @@ import time
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Chrome(executable_path='/home/adil/scalpture/scalpture/chromedriver', desired_capabilities={"chromeOptions": {"binary": "/snap/chromium/2295/usr/lib/chromium-browser", "args": ["--remote-debugging-port=9515"]}})
+    driver = webdriver.Chrome(executable_path='/home/adil/scalpture/scalpture/chromedriver')
     while True:
         try:
             # Navigate to the website you want to scrape product page
