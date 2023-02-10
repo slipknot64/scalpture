@@ -15,15 +15,8 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 def do_purchase(email, password, product_url, cvv):
 
-    desired_capabilities = {
-        'browserName': 'chrome',
-        'version': '110.0',
-        'platform': 'ANY',
-        'chrome.binary': '/usr/bin/google-chrome-stable',
-        'chrome.switches': ['--no-sandbox', '--disable-dev-shm-usage'],
-    }
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://178.62.13.58:9515', desired_capabilities=desired_capabilities)
+    driver = webdriver.Chrome("/usr/bin/chromedriver", options=chrome_options)
     while True:
         try:
             # Navigate to the website you want to scrape product page
