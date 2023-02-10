@@ -9,9 +9,21 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.chrome.options import Options
 import time
 
+chrome_options = Options()
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
 def do_purchase(email, password, product_url, cvv):
+
+    desired_capabilities = {
+        'browserName': 'chrome',
+        'version': '110.0',
+        'platform': 'ANY',
+        'chrome.binary': '/usr/bin/google-chrome-stable',
+        'chrome.switches': ['--no-sandbox', '--disable-dev-shm-usage'],
+    }
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Chrome(executable_path='/home/adil/scalpture/scalpture/gekodriver')
+    driver = webdriver.Remote(command_executor='http://http://178.62.13.58/:4444/wd/hub', desired_capabilities=desired_capabilities)
     while True:
         try:
             # Navigate to the website you want to scrape product page
