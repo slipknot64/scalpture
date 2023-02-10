@@ -23,7 +23,7 @@ def do_purchase(email, password, product_url, cvv):
         'chrome.switches': ['--no-sandbox', '--disable-dev-shm-usage'],
     }
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://178.62.13.58/:9515/wd/hub', desired_capabilities=desired_capabilities)
+    driver = webdriver.Remote(command_executor='http://178.62.13.58:4444/wd/hub', desired_capabilities=desired_capabilities)
     while True:
         try:
             # Navigate to the website you want to scrape product page
