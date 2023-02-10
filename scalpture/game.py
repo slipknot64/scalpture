@@ -6,7 +6,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from pyvirtualdisplay import Display
 import time
+
+display = Display(visible=0, size=(800, 600))
+display.start()
 
 options = webdriver.ChromeOptions()
 options.add_argument("--no-sandbox")
