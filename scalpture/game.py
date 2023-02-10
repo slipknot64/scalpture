@@ -6,17 +6,24 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.webdriver.chrome.options import Options
 import time
 
-chrome_options = Options()
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
+options = webdriver.ChromeOptions()
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-gpu")
+options.add_argument("start-maximized")
+options.add_argument("disable-infobars")
+options.add_argument("--disable-extensions")
+options.add_argument("--remote-debugging-port=9222")
+options.add_argument("--disable-browser-side-navigation")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-gpu")
 
 def do_purchase(email, password, product_url, cvv):
 
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Chrome("/usr/bin/chromedriver", options=chrome_options)
+    driver = webdriver.Remote("http://178.62.13.58:9222/wd/hub", desired_capabilities=options.to_capabilities())
     while True:
         try:
             # Navigate to the website you want to scrape product page
