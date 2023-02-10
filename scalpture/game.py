@@ -13,7 +13,7 @@ import chromedriver_binary  # Adds chromedriver binary to path
 def do_purchase(email, password, product_url, cvv):
 
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor= "http://178.62.13.58:9222/wd/hub")
+    driver = webdriver.Remote(command_executor= "http://178.62.13.58:8000/wd/hub")
     s = requests.Session()
     retry = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
     s.mount('http://', HTTPAdapter(max_retries=retry))
