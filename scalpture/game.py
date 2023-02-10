@@ -1,33 +1,30 @@
 import os
-import time
-import requests
-from urllib3.util.retry import Retry
-from requests.adapters import HTTPAdapter
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-import chromedriver_binary  # Adds chromedriver binary to path
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from seleniumwire import webdriver as wire_webdriver
+import time
 
-capabilities = DesiredCapabilities.CHROME
-capabilities['loggingPrefs'] = {'browser': 'ALL'}
+# No change needed, as the path to chromedriver is not required on PythonAnywhere
+options = webdriver.ChromeOptions()
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument("--disable-gpu")
+
+os.environ["webdriver.chrome.driver"] = "/home/slipknot100/slipknot100.pythonanywhere.com/scalpture/chromedriver.exe"
 
 def do_purchase(email, password, product_url, cvv):
-
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor= "http://178.62.13.58:9515/wd/hub", desired_capabilities=capabilities)
-    s = requests.Session()
-    retry = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
-    s.mount('http://', HTTPAdapter(max_retries=retry))
+    driver = wire_webdriver.Chrome(options=options)
     while True:
         try:
             # Navigate to the website you want to scrape product page
             driver.get(product_url)
 
             try:
-                stock_status = WebDriverWait(driver, 10).until (EC.visibility_of_element_located(By.CSS_SELECTOR, '.outOfStock'))
+                stock_status = driver.find_element(By.CSS_SELECTOR, '.outOfStock')
                 if stock_status.text == "Sorry, this product is currently out of stock, but might be available in store":
                     print("Out of stock, checking again in 1 minute and 18 seconds...")
                     time.sleep(78) # sleep for 78 seconds
@@ -142,14 +139,11 @@ def do_purchase(email, password, product_url, cvv):
 
                 # Print a message to confirm that the order was placed successfully
                 print("Order placed successfully!")
-                driver.quit()
                 break
+
         except Exception as e:
                     # Print the exception message
                     print(e)
 
         # When you're done, uncomment below code to stop the ChromeDriver process
         #driver_process.kill()
-
-
-
