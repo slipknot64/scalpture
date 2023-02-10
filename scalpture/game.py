@@ -1,30 +1,26 @@
 import os
+import time
 import requests
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
 from selenium import webdriver
-import chromedriver_binary  # Adds chromedriver binary to path
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.webdriver.chrome.options import Options
-from urllib3.util.retry import Retry
-from requests.adapters import HTTPAdapter
-import time
+import chromedriver_binary  # Adds chromedriver binary to path
 
 def do_purchase(email, password, product_url, cvv):
 
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_exectuor="http://178.62.13.58:9222/wd/hub")
-    s = requests.Session()
-    retry = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
-    s.mount('http://', HTTPAdapter(max_retries=retry))
+    driver = webdriver.Remote(command_executor= "http://178.62.13.58:9222/wd/hub")
     while True:
         try:
             # Navigate to the website you want to scrape product page
             driver.get(product_url)
 
             try:
-                stock_status = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.outOfStock')))
+                stock_status = WebDriverWait(driver, 10).until (EC.visibility_of_element_located(By.CSS_SELECTOR, '.outOfStock'))
                 if stock_status.text == "Sorry, this product is currently out of stock, but might be available in store":
                     print("Out of stock, checking again in 1 minute and 18 seconds...")
                     time.sleep(78) # sleep for 78 seconds
