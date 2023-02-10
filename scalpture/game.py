@@ -14,7 +14,7 @@ options = {
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://68.219.216.35:3389', seleniumwire_options=options)
+    driver = webdriver.Remote(command_executor='http://68.219.216.35:3389', options=options)
     while True:
         try:
             # Navigate to the website you want to scrape product page
