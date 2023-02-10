@@ -9,19 +9,12 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.chrome.options import Options
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
-from fake_useragent import UserAgent
 import time
-
-options = Options()
-ua = UserAgent()
-userAgent = ua.rando
-
-options.add_argument(f'user-agent={userAgent}')
 
 def do_purchase(email, password, product_url, cvv):
 
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(chrome_options=options, command_exectuor="http://178.62.13.58:9222/wd/hub")
+    driver = webdriver.Remote(command_exectuor="http://178.62.13.58:9222/wd/hub")
     s = requests.Session()
     retry = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
     s.mount('http://', HTTPAdapter(max_retries=retry))
