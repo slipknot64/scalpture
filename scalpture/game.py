@@ -6,35 +6,27 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from pyvirtualdisplay import Display
+from selenium.webdriver.chrome.options import Options
+from fake_useragent import UserAgent
 import time
 
-display = Display(visible=0, size=(800, 600))
-display.start()
+options = Options()
+ua = UserAgent()
+userAgent = ua.rando
 
-options = webdriver.ChromeOptions()
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("start-maximized")
-options.add_argument("disable-infobars")
-options.add_argument("--disable-extensions")
-options.add_argument("--remote-debugging-port=9222")
-options.add_argument("--disable-browser-side-navigation")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
+options.add_argument(f'user-agent={userAgent}')
 
 def do_purchase(email, password, product_url, cvv):
 
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote("http://178.62.13.58:9222/wd/hub", desired_capabilities=options.to_capabilities())
+    driver = webdriver.Remote(chrome_options=options, command_exectuor="http://178.62.13.58:9222/wd/hub")
     while True:
         try:
             # Navigate to the website you want to scrape product page
             driver.get(product_url)
 
             try:
-                stock_status = driver.find_element(By.CSS_SELECTOR, '.outOfStock')
+                stock_status = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.outOfStock')))
                 if stock_status.text == "Sorry, this product is currently out of stock, but might be available in store":
                     print("Out of stock, checking again in 1 minute and 18 seconds...")
                     time.sleep(78) # sleep for 78 seconds
@@ -149,8 +141,8 @@ def do_purchase(email, password, product_url, cvv):
 
                 # Print a message to confirm that the order was placed successfully
                 print("Order placed successfully!")
+                driver.quit()
                 break
-
         except Exception as e:
                     # Print the exception message
                     print(e)
