@@ -12,12 +12,14 @@ options = webdriver.ChromeOptions()
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
+options.add_argument('--disable-features=DenyRemoteStart')
+options.add_argument('--disable-features=AllowLocalOnly')
 
 os.environ["webdriver.chrome.driver"] = "/home/slipknot100/slipknot100.pythonanywhere.com/scalpture/chromedriver.exe"
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = wire_webdriver.Chrome(options=options)
+    driver = wire_webdriver.Chrome(command_executor='http://your_azure_ip:9515', options=options)
     while True:
         try:
             # Navigate to the website you want to scrape product page
