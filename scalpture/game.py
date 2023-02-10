@@ -9,11 +9,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import chromedriver_binary  # Adds chromedriver binary to path
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+capabilities = DesiredCapabilities.CHROME
+capabilities['loggingPrefs'] = {'browser': 'ALL'}
 
 def do_purchase(email, password, product_url, cvv):
 
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor= "http://178.62.13.58:9515/wd/hub")
+    driver = webdriver.Remote(command_executor= "http://178.62.13.58:9515/wd/hub", desired_capabilities=capabilities)
     s = requests.Session()
     retry = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
     s.mount('http://', HTTPAdapter(max_retries=retry))
