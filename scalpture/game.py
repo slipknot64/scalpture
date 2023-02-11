@@ -7,10 +7,7 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from seleniumwire import webdriver as wire_webdriver
 import time
 
-# No change needed, as the path to chromedriver is not required on PythonAnywhere
-options = {
-    'addr': '68.219.216.35'  # Address of the machine running Selenium Wire. Explicitly use 127.0.0.1 rather than localhost if remote session is running locally.
-}
+options = webdriver.ChromeOptions()
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
@@ -19,7 +16,7 @@ options.add_argument('--disable-features=AllowLocalOnly')
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://68.219.216.35:3389', options=options)
+    driver = webdriver.Remote(command_executor='http://68.219.216.35:9515', desired_capabilities=options.to_capabilities())
     while True:
         try:
             # Navigate to the website you want to scrape product page
