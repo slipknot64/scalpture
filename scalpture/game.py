@@ -8,6 +8,7 @@ from seleniumwire import webdriver as wire_webdriver
 import time
 
 options = webdriver.ChromeOptions()
+options.add_argument("--whitelisted-ips='35.173.69.207'")
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
