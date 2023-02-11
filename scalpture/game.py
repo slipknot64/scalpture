@@ -13,6 +13,7 @@ options.add_argument('--disable-dev-shm-usage')
 options.add_argument("--disable-gpu")
 options.add_argument('--disable-features=DenyRemoteStart')
 options.add_argument('--disable-features=AllowLocalOnly')
+options.add_argument('--host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE 68.219.216.35"')
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
