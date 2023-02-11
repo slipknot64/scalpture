@@ -11,6 +11,11 @@ import time
 options = {
     'addr': '68.219.216.35'  # Address of the machine running Selenium Wire. Explicitly use 127.0.0.1 rather than localhost if remote session is running locally.
 }
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument("--disable-gpu")
+options.add_argument('--disable-features=DenyRemoteStart')
+options.add_argument('--disable-features=AllowLocalOnly')
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
