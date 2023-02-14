@@ -1,1 +1,2 @@
 web: gunicorn scalper.wsgi
+web: gunicorn app:scalpture
