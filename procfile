@@ -1,2 +1,0 @@
-web: gunicorn scalper.wsgi
-web: gunicorn scalper:app
