@@ -31,7 +31,7 @@ DEBUG = True
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'slipknot100.pythonanywhere.com']
+    ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 
 # Application definition
