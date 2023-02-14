@@ -4,7 +4,7 @@ from .game import do_purchase
 
 def homepage_view(request):
     form = PurchaseForm()
-    return render(request, 'homepage.html', {'form': form})
+    return render(request, 'homepage/homepage.html', {'form': form})
 
 def execute_purchase_script(email, password, product_url, cvv):
 
