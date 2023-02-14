@@ -1,1 +1,0 @@
-web: gunicorn scalper.wsgi:application
