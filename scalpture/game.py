@@ -4,22 +4,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from seleniumwire import webdriver as wire_webdriver
 import time
-
-options = webdriver.ChromeOptions()
-options.add_argument("--whitelisted-ips='35.173.69.207'")
-options.add_argument("--allowlist-ips='68.219.216.35'")
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument("--disable-gpu")
-options.add_argument('--disable-features=DenyRemoteStart')
-options.add_argument('--disable-features=AllowLocalOnly')
-options.add_argument('--host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE 68.219.216.35"')
 
 def do_purchase(email, password, product_url, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://68.219.216.35:9515', desired_capabilities=options.to_capabilities())
+    driver = webdriver.Remote(command_executor='http://127.0.0.1:9515')
     while True:
         try:
             # Navigate to the website you want to scrape product page
