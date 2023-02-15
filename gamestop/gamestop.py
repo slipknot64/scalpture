@@ -4,20 +4,18 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from seleniumwire import webdriver as wire_webdriver
-from selenium.webdriver.chrome.options import Options
 
 # No change needed, as the path to chromedriver is not required on PythonAnywhere
-options = Options()
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
+options = webdriver.ChromeOptions()
 options.add_argument('--disable-gpu')
-options.add_argument('--remote-debugging-port=9222')
+options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.100 Safari/537.36')
+
+# specify the remote server's URL
+remote_url = 'http://68.219.216.35:4444/wd/hub'
 
 def do_purchase(product_url, first_name, last_name, street_address, zip_code, city, state, email, phone_number, card_number, expiration_date, cvv):
     # Start a webdriver instance using the desired capabilities
-    driver = webdriver.Remote(command_executor='http://178.62.13.58:9515', options=options)
+    driver = webdriver.Remote(command_executor=remote_url, desired_capabilities=options.to_capabilities())
 
     while True:
         try:
