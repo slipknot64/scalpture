@@ -24,6 +24,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -36,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'scalpture',
     'gamestop',
+    'accounts',
+    'customers'
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,18 @@
 @import 'bootstrap/bootstrap';
 @import 'bootstrap/variables';
 @import 'bootstrap/mixins';
+//Common
+@import 'common/extend.scss';
+@import 'common/fonts.scss';
+@import 'common/minxi.scss';
+@import 'common/variables.scss';
+@import 'common/global.scss';
+
+//layout
+@import 'layouts/main.scss';
+
+// Responsive
+@import 'layouts/responsive.scss';
 
 $font-primary: 'Poppins',Arial, sans-serif;
 

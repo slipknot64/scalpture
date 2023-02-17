@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('scalpture.urls', namespace='scalpture')),
     path('', include('gamestop.urls', namespace='gamestop')),
+    path('', include('accounts.urls', namespace='accounts')),
 ]
