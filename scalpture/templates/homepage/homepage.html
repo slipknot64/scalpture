@@ -72,13 +72,34 @@
 				      	<h3 class="mb-4">GAME.CO.UK</h3>
 				      	<form method="post" action="{% url 'scalpture:purchase' %}">
 							{% csrf_token %}
-				      		<div class="form-group">
-				      			<input type="email" name="email" class="form-control" placeholder="Outlook Email address" required autofocus>
-			            <div class="form-group">
-			              <input type="password" name="password" class="form-control" placeholder="Outlook Password" required>
+                  <div class="form-group">
+                    <div class="form-group">
+                      <input type="product_url" name="product_url" class="form-control" placeholder="Product URL" required>
+                    </div>
+                    <input type="title" name="title" class="form-control" placeholder="Title" required>
+                  </div>
+			              <input type="firstName" name="firstName" class="form-control" placeholder="First Name" required>
 			            </div>
                   <div class="form-group">
-			              <input type="product_url" name="product_url" class="form-control" placeholder="Product URL" required>
+			              <input type="lastName" name="lastName" class="form-control" placeholder="Last Name" required>
+			            </div>
+                  <div class="form-group">
+				      			<input type="email_address" name="email_address" class="form-control" placeholder="Email Address" required autofocus>
+			            <div class="form-group">
+                    <div class="form-group">
+                      <input type="mobileNumber" name="mobileNumber" class="form-control" placeholder="Mobile Number" required>
+                    </div>
+                  <div class="form-group">
+			              <input type="address" name="address" class="form-control" placeholder="Address" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="fullName" name="fullName" class="form-control" placeholder="Name on Card" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="cardNumber" name="cardNumber" class="form-control" placeholder="Card Number" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="expiration" name="expiration" class="form-control" placeholder="Expiry(01/23)" required>
 			            </div>
                   <div class="form-group">
 			              <input type="cvv" name="cvv" class="form-control" placeholder="CVV" required>
