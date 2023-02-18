@@ -107,7 +107,7 @@ def do_purchase(title, email_address, firstName, lastName, product_url, address,
             continue_to_payment = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'button[data-test="continue-to-payment"]')))
             continue_to_payment.click()
 
-            time.sleep(2)
+            time.sleep(5)
 
             # Click card number field
             card_number_container = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'card-number-container')))

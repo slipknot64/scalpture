@@ -11,7 +11,7 @@ TITLE_CHOICES = [
 class PurchaseForm(forms.Form):
     title = forms.ChoiceField(choices=TITLE_CHOICES)
     product_url = forms.CharField(label='Product URL', max_length=200)
-    email = forms.CharField(label='Email', max_length=100)
+    email_address = forms.CharField(label='Email', max_length=100)
     firstName = forms.CharField(label='First Name', max_length=100)
     lastName = forms.CharField(label='Last Name', max_length=100)
     address = forms.CharField(label='Address', max_length=100)
