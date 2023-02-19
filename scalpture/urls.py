@@ -8,6 +8,8 @@ urlpatterns = [
     path('purchase/', views.purchase_view, name='purchase'),
     path('success/', views.success_view, name='success'),
     path('error/', views.error_view, name='error'),
+    path('game/', views.game_view, name='game'),
+    path('signin/', views.signin_view, name='signin'),
     path('', views.homepage_view, name='homepage'),
     path('', include('gamestop.urls')),
 ]

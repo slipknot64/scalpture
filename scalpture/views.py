@@ -3,8 +3,14 @@ from .forms import PurchaseForm
 from .game import do_purchase
 
 def homepage_view(request):
+    return render(request,'homepage/homepage.html')
+
+def signin_view(request):
+    return render(request,'signin.html')
+
+def game_view(request):
     form = PurchaseForm()
-    return render(request,'homepage/homepage.html', {'form': form})
+    return render(request,'game.html', {'form': form})
 
 def execute_purchase_script(title, email_address, firstName, lastName, product_url, address, fullName, cardNumber, cvv, expiration, mobileNumber):
 

@@ -20,7 +20,7 @@
         <div class="signup-content">
           <form method="POST" id="signup-form" class="signup-form" action="{% url 'accounts:signup' %}">
             {% csrf_token %}
-            <h2>Sign up </h2>
+            <h2>Sign up</h2>
             <p class="desc">Get access to all scripts for just £100 <span>“LIFETIME FEE ONLY”</span></p>
             <div class="form-group">
               {{ form.full_name.label_tag }}

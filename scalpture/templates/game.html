@@ -1,0 +1,126 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+  	<title>Scalpture - Homepage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	
+		<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="menu">
+          <h3 class="logo">Scalp<span>ture</span></h3>
+          <div class="hamburger-menu">
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-container">
+        <div class="main">
+          <header>
+            <div class="overlay">
+              <div class="inner">
+                <h2 class="mb-2">GAME.CO.UK</h2>
+                <button type="button" class="btn btn-primary py-3 px-4" data-toggle="modal" data-target="#modal-container">
+                  LAUNCH GAME.CO.UK SCRIPT
+                </button>                
+              </div>
+            </div>
+          </header>
+        </div>
+
+        <div class="shadow one"></div>
+        <div class="shadow two"></div>
+      </div>
+
+      <div class="links">
+        <ul>
+          <li>
+            <a href="#" style="--i: 0.05s;">Home</a>
+          </li>
+          <li>
+            <a href="#" style="--i: 0.25s;">About</a>
+          </li>
+          <li>
+            <a href="#" style="--i: 0.1s;">Script Services</a>
+          </li>
+          <li>
+            <a href="#" style="--i: 0.3s;">VIP Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+		<div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true" class="ion-ios-close"></span>
+		        </button>
+		      </div>
+		      <div class="row">
+			      <div class="col-md mb-md-0 mb-5">
+				      <div class="modal-body p-0">
+				      	<h3 class="mb-4">GAME.CO.UK</h3>
+                <h5 class="mb-4">Enter all relevant information required by Game below</h5>
+				      	<form method="post" action="{% url 'scalpture:purchase' %}">
+							{% csrf_token %}
+              <div class="form-group">
+                <input type="product_url" name="product_url" class="form-control" placeholder="Product URL" required>
+              </div>
+                  <div class="form-group">
+                    <input type="title" name="title" class="form-control" placeholder="Title" required>
+                  </div>
+			              <input type="firstName" name="firstName" class="form-control" placeholder="First Name" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="lastName" name="lastName" class="form-control" placeholder="Last Name" required>
+			            </div>
+                  <div class="form-group">
+				      			<input type="email_address" name="email_address" class="form-control" placeholder="Email Address" required autofocus>
+			            <div class="form-group">
+                    <div class="form-group">
+                      <input type="mobileNumber" name="mobileNumber" class="form-control" placeholder="Mobile Number" required>
+                    </div>
+                  <div class="form-group">
+			              <input type="address" name="address" class="form-control" placeholder="Address" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="fullName" name="fullName" class="form-control" placeholder="Name on Card" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="cardNumber" name="cardNumber" class="form-control" placeholder="Card Number" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="expiration" name="expiration" class="form-control" placeholder="Expiry(01/23)" required>
+			            </div>
+                  <div class="form-group">
+			              <input type="cvv" name="cvv" class="form-control" placeholder="CVV" required>
+			            </div>
+			            <div class="form-group">
+			            	<button type="submit" class="form-control btn btn-primary rounded submit px-3">Submit</button>
+			            </div>
+			          </form>
+				      </div>
+				    </div>
+				    </div>
+				  </div>
+		    </div>
+		  </div>
+		</div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/hamburger.menu.js' %}"></script>
+  </body>
+</html>
