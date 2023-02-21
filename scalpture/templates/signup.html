@@ -20,7 +20,7 @@
         <div class="signup-content">
           <form method="POST" id="signup-form" class="signup-form" action="{% url 'accounts:signup' %}">
             {% csrf_token %}
-            <h2>Sign up</h2>
+            <h2>SIGN UP</h2>
             <p class="desc">Get access to all scripts for just £100 <span>“LIFETIME FEE ONLY”</span></p>
             <div class="form-group">
               {{ form.full_name.label_tag }}
@@ -43,10 +43,12 @@
             <div class="form-group">
               {{ form.agree_terms.label_tag }}
               {{ form.agree_terms }}
+              <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+              <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
             </div>
             <div class="form-group">
               <input type="submit" name="submit" id="submit" class="form-submit submit" value="Sign up"/>
-              <a href="#" class="submit-link submit">Sign in</a>
+              <a href="#" class="submit-link submit">VIP LOGIN</a>
             </div>
           </form>
         </div>

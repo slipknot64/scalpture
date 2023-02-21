@@ -10,7 +10,7 @@
 	
 		<link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">   
   </head>
   <body>
     <div class="container">
@@ -24,6 +24,9 @@
       </div>
 
       <div class="main-container">
+        <video autoplay muted loop id="bg-video">
+          <source src="{% static 'videos/hogwarts.mp4' %}" type="video/mp4">
+        </video>   
         <div class="main">
           <header>
             <div class="overlay">
