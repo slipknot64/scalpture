@@ -25,8 +25,9 @@
 
       <div class="main-container">
         <video autoplay loop muted playsinline id="bg-video">
+          <source src="{% static 'videos/hogwarts.h264' %}" type="video/h264">
           <source src="{% static 'videos/hogwarts.mp4' %}" type="video/mp4">
-        <source src="{% static 'videos/hogwarts.webm' %}" type="video/webm">
+          <source src="{% static 'videos/hogwarts.webm' %}" type="video/webm">
         </video>   
         <div class="main">
           <header>
