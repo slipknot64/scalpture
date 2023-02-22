@@ -366,7 +366,7 @@ ul {
   #bg-video {
     width: 100%;
     min-height: 1028px;
-    background-image: url('/static/videos/mobile/Hogwarts.webm');
+    background-image: url('/static/videos/mobile/hogwarts-mobile.mp4');
     background-size: cover;
     visibility: hidden;
   }
@@ -420,7 +420,7 @@ ul {
   #bg-video {
     width: 100%;
     min-height: 1536px;
-    background-image: url('/static/videos/mobile/Hogwarts.webm');
+    background-image: url('/static/videos/mobile/hogwarts-mobile.mp4');
     background-size: cover;
     visibility: hidden;
   }
@@ -473,7 +473,7 @@ ul {
   #bg-video {
     width: 100%;
     height: auto;
-    background-image: url('/static/videos/mobile/Hogwarts.webm');
+    background-image: url('/static/videos/mobile/hogwarts-mobile.mp4');
     background-size: cover;
     min-height: 898px;
     visibility: hidden;
