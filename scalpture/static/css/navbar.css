@@ -490,3 +490,59 @@ ul {
     transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
   }
 }
+
+/* Styles for TV screens */
+@media only screen and (min-width: 1920px) and (max-width: 3840px) {
+  .menu {
+    padding: 0 2rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .title {
+    font-size: 2.7rem;
+  }
+
+  .btn {
+    font-size: 1.1rem;
+  }
+
+  .inner {
+    max-width: 35rem;
+  }
+
+  header {
+    background-position: center center;
+    background: url('/static/images/mobile/hogwarts.jpg') no-repeat top center / cover;
+    height: 672px;
+  }
+
+  #bg-video {
+    width: 100%;
+    height: auto;
+    min-width: 1920px;
+    max-width: 3480px;
+    min-height: 1080px;
+    max-height: 2160px;
+    visibility: hidden;
+  }
+
+  .container.active #bg-video {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .container.active .main {
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-10px) scale(0.5);
+  }
+
+  .container.active .shadow.one{
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
+  }
+
+  .container.active .shadow.two{
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
+  }
+}
