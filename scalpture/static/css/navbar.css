@@ -520,7 +520,7 @@ ul {
 
   #bg-video {
     width: 100%;
-    min-height: 2423px;
+    height: 100%;
     visibility: hidden;
   }
 
