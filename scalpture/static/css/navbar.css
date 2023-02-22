@@ -317,3 +317,196 @@ ul {
 .container.active .main:hover {
   transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
 }
+
+/* Styles for mobile screens */
+@media only screen and (max-width: 400px) {
+  .menu {
+    padding: 0 1rem;
+  }
+
+  .hamburger-menu {
+    height: 2.5rem;
+    width: 2rem;
+  }
+
+  .bar {
+    width: 1.5rem;
+    height: 1px;
+  }
+
+  .bar:before,
+  .bar:after {
+    width: 1.5rem;
+    height: 1px;
+  }
+
+  .logo {
+    font-size: 1rem;
+    line-height: 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .inner {
+    max-width: 25rem;
+  }
+
+  header {
+    background-position: center center;
+    background: url('/static/images/mobile/hogwarts_375x667.jpg') no-repeat top center / cover;
+  }
+
+  #bg-video {
+    width: 100%;
+    height: auto;
+    background-image: url('/static/videos/mobile/hogwarts_375x667.mp4');
+    background-size: cover;
+    transform: translateY(-292px) translateX(-187px);
+  }
+
+  .container.active .main {
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-10px) scale(0.5);
+  }
+
+  .container.active .shadow.one{
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
+  }
+
+  .container.active .shadow.two{
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
+  }
+}
+
+/* Styles for mobile screens */
+@media only screen and (min-width: 401px) and (max-width: 600px) {
+  .menu {
+    padding: 0 1rem;
+  }
+
+  .hamburger-menu {
+    height: 2.5rem;
+    width: 2rem;
+  }
+
+  .bar {
+    width: 1.5rem;
+    height: 1px;
+  }
+
+  .bar:before,
+  .bar:after {
+    width: 1.5rem;
+    height: 1px;
+  }
+
+  .logo {
+    font-size: 1rem;
+    line-height: 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .inner {
+    max-width: 25rem;
+  }
+
+  header {
+    background-position: center center;
+    background: url('/static/images/mobile/hogwarts_1_414x896.jpg') no-repeat top center / cover;
+  }
+
+  #bg-video {
+    width: 100%;
+    height: auto;
+    background-image: url('/static/videos/mobile/hogwarts_375x667.mp4');
+    background-size: cover;
+    transform: translateY(-393px) translateX(-207px);
+  }
+
+  .container.active .main {
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-10px) scale(0.5);
+  }
+
+  .container.active .shadow.one{
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
+  }
+
+  .container.active .shadow.two{
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) translateX(-50px) scale(0.5);
+  }
+}
+
+/* Styles for tablet screens */
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+  .menu {
+    padding: 0 1.5rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+
+  .inner {
+    max-width: 30rem;
+  }
+
+  #bg-video {
+    display: none;
+  }
+
+  header {
+    background-position: center center!important;
+    background: url("https://assets.xboxservices.com/assets/e5/4d/e54d4a36-75a4-481d-936d-47956fc448b9.jpg?n=Hogwarts-Legacy_GLP-Page-Hero-1084_1920x1080.jpg") no-repeat top center / cover!important;
+  }
+}
+
+/* Styles for desktop screens */
+@media only screen and (min-width: 961px) {
+  .menu {
+    padding: 0 2rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .title {
+    font-size: 2.7rem;
+  }
+
+  .btn {
+    font-size: 1.1rem;
+  }
+
+  .inner {
+    max-width: 35rem;
+  }
+
+  #bg-video {
+    display: block;
+  }
+
+  header {
+    background-position: top center;
+  }
+}
