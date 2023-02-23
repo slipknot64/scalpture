@@ -23,7 +23,7 @@ SECRET_KEY = 'django-insecure-q(uc%j!r6yfs2ly6i9tiy@_hfrw@rrfc7okj&p(jnvcxk+dqm4
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'slipknot100.pythonanywhere.com']
 
 AUTH_USER_MODEL = 'accounts.User'
 
