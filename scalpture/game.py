@@ -13,7 +13,7 @@ options.add_argument('--disable-gpu')
 options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.100 Safari/537.36')
 
 # specify the remote server's URL
-remote_url = 'https://68.219.216.35:4444/wd/hub'
+remote_url = 'http://68.219.216.35:4444/wd/hub'
 
 def do_purchase(title, email_address, firstName, lastName, product_url, address, fullName, cardNumber, cvv, expiration, mobileNumber):
     # Start a webdriver instance using the desired capabilities
