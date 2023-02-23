@@ -91,8 +91,8 @@ def do_purchase(title, email_address, firstName, lastName, product_url, address,
         address_input = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'mat-input-4')))
         address_input.send_keys(address)
 
-        # Wait for 1.2 second
-        time.sleep(1.2)
+        # Wait for 5 second
+        time.sleep(5)
         
         # Selects the first relevant address
         address_select = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.mat-autocomplete-panel')))
