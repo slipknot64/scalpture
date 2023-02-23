@@ -18,5 +18,5 @@ class PurchaseForm(forms.Form):
     fullName = forms.CharField(label='Name on Card', max_length=100)
     cardNumber = forms.CharField(label='Card Number', max_length=16)
     expiration = forms.CharField(label='Expiration', max_length=5)
-    cvv = forms.CharField(label='CVV', max_length=3)
+    cvv = forms.CharField(label='CVV', max_length=7)
     mobileNumber = forms.CharField(label='Mobile Number', max_length=11)
