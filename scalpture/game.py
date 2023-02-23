@@ -12,7 +12,6 @@ options.add_argument("--ignore-certificate-errors")
 options.add_argument('--disable-gpu')
 options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.100 Safari/537.36')
 
-# Manually changing the IP address on pythonanywhere and then changing it back keeping it http and reloading should fix issue
 # specify the remote server's URL
 remote_url = 'http://68.219.216.35:4444/wd/hub'
 
