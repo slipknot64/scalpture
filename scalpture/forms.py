@@ -15,6 +15,7 @@ class PurchaseForm(forms.Form):
     firstName = forms.CharField(label='First Name', max_length=100)
     lastName = forms.CharField(label='Last Name', max_length=100)
     address = forms.CharField(label='Address', max_length=100)
+    postcode = forms.CharField(label='Postcode', max_length=8)
     fullName = forms.CharField(label='Name on Card', max_length=100)
     cardNumber = forms.CharField(label='Card Number', max_length=16)
     expiration = forms.CharField(label='Expiration', max_length=7)

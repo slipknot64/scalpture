@@ -80,33 +80,36 @@
                     <input type="product_url" name="product_url" class="form-control" placeholder="Product URL" required>
                   </div>
                   <div class="form-group">
-                    <input type="title" name="title" class="form-control" placeholder="Title" required>
+                    <input type="text" name="title" class="form-control" placeholder="Title" required>
                   </div>
                   <div class="form-group">
-                    <input type="firstName" name="firstName" class="form-control" placeholder="First Name" required>
+                    <input type="text" name="firstName" class="form-control" placeholder="First Name" required>
                   </div>
                   <div class="form-group">
-                    <input type="lastName" name="lastName" class="form-control" placeholder="Last Name" required>
+                    <input type="text" name="lastName" class="form-control" placeholder="Last Name" required>
                   </div>
                   <div class="form-group">
-                    <input type="email_address" name="email_address" class="form-control" placeholder="Email Address" required autofocus>
+                    <input type="text" name="email_address" class="form-control" placeholder="Email Address" required autofocus>
                   </div>
                   <div class="form-group">
-                    <input type="mobileNumber" name="mobileNumber" class="form-control" placeholder="Mobile Number" required>
+                    <input type="text" name="mobileNumber" class="form-control" placeholder="Mobile Number" required>
                   </div>
                   <!-- Must add comma after inputting address and then postcode to avoid shipment to wrong address-->
                   <div class="form-group">
-                    <input type="address" name="address" class="form-control" placeholder="Address" required>
+                    <input type="text" name="address" class="form-control" placeholder="Address" required>
                   </div>
                   <div class="form-group">
-                    <input type="fullName" name="fullName" class="form-control" placeholder="Name on Card" required>
+                    <input type="text" name="postcode" class="form-control" placeholder="Postcode" required>
+                </div>
+                  <div class="form-group">
+                    <input type="text" name="fullName" class="form-control" placeholder="Name on Card" required>
                   </div>
                   <div class="form-group">
-                    <input type="cardNumber" name="cardNumber" class="form-control" placeholder="Card Number" required>
+                    <input type="text" name="cardNumber" class="form-control" placeholder="Card Number" required>
                   </div>
-                  <!-- The Expiration must be inputted in this format MM/YY -->
                   <div class="form-group">
-                    <input type="expiration" name="expiration" class="form-control" placeholder="Expiry(01/23)" required>
+                    <input type="text" id="expiration-date" name="expiration" class="form-control" placeholder="Expiry(MM/YY)" maxlength="5" required>
+                    <span class="error-message" style="display: none;">Expiration date must be in the format MM/YY</span>
                   </div>
                   <div class="form-group">
                     <input type="cvv" name="cvv" class="form-control" placeholder="CVV" required>

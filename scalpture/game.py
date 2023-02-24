@@ -1,4 +1,4 @@
-import os
+import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,7 +15,7 @@ options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 # specify the remote server's URL
 remote_url = 'http://68.219.216.35:4444/wd/hub'
 
-def do_purchase(title, email_address, firstName, lastName, product_url, address, fullName, cardNumber, cvv, expiration, mobileNumber):
+def do_purchase(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber):
     # Start a webdriver instance using the desired capabilities
     driver = webdriver.Remote(command_executor=remote_url, desired_capabilities=options.to_capabilities())
     try:
@@ -86,9 +86,16 @@ def do_purchase(title, email_address, firstName, lastName, product_url, address,
         # Wait for the element to become visible
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[formcontrolname="postcode"]')))
 
+        # Add a comma to the address field
+        address_with_comma = address + ", "
+
         # Fill in the address field
         address_input = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'mat-input-4')))
-        address_input.send_keys(address)
+        address_input.send_keys(address_with_comma)
+
+        # Fill in the postcode field
+        postcode_input = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'input[formcontrolname="postcode"]')))
+        postcode_input.send_keys(postcode)
 
         # Wait for 1.2 second
         time.sleep(1.2)
@@ -114,6 +121,10 @@ def do_purchase(title, email_address, firstName, lastName, product_url, address,
         card_number_container = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'card-number-container')))
         card_number_container.click()
 
+        # Check the cardNumber field for input validation
+        if not cardNumber.isdigit():
+            raise ValueError("Card number must only contain digits")
+
         # Fill in the card number field
         card_number = driver.switch_to.active_element
         card_number.send_keys(cardNumber)
@@ -122,6 +133,11 @@ def do_purchase(title, email_address, firstName, lastName, product_url, address,
         name_on_card = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'mat-form-field[data-test="name"] input[formcontrolname="name"]')))
         name_on_card.click()
         name_on_card.send_keys(fullName)
+
+        exp_pattern = re.compile(r"^(0[1-9]|1[0-2])/(\d{2})$")
+
+        if not exp_pattern.match(expiration):
+            raise ValueError("Expiration date must be in the format MM/YY")
 
         # Find the expiry date input field
         expiry_date = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[formcontrolname="expiryDate"]')))
@@ -169,3 +185,7 @@ def do_purchase(title, email_address, firstName, lastName, product_url, address,
     except Exception as e:
             # Print the exception message
             print(e)
+    finally:
+        # close the driver window
+        driver.quit()
+    
