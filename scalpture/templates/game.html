@@ -79,9 +79,12 @@
                   <div class="form-group">
                     <input type="product_url" name="product_url" class="form-control" placeholder="Product URL" required>
                   </div>
-                  <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Title" required>
-                  </div>
+                  <select name="title" class="form-control" style="color: black;" required>
+                    <option value="">Title</option>
+                    {% for value, label in form.title.field.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
                   <div class="form-group">
                     <input type="text" name="firstName" class="form-control" placeholder="First Name" required>
                   </div>
