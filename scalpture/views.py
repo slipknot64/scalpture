@@ -5,6 +5,9 @@ from .game import do_purchase
 def homepage_view(request):
     return render(request,'homepage/homepage.html')
 
+def script_services(request):
+    return render(request, 'script-services.html')
+
 def signin_view(request):
     return render(request,'signin.html')
 

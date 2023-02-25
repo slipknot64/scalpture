@@ -10,6 +10,7 @@ urlpatterns = [
     path('error/', views.error_view, name='error'),
     path('game/', views.game_view, name='game'),
     path('signin/', views.signin_view, name='signin'),
+    path('script-services/', views.script_services, name='script-service'),
     path('', views.homepage_view, name='homepage'),
     path('', include('gamestop.urls')),
 ]
