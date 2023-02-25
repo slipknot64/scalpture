@@ -258,3 +258,9 @@ transition: background-color 300ms ease, transform 300ms ease-in-out;
 .store:last-of-type {
     z-index: 9999;
   }
+
+.collection-item a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
