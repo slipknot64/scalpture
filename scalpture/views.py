@@ -17,11 +17,26 @@ def game_view(request):
 
 def execute_purchase_script(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber):
 
-    success = do_purchase(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
-    if success:
-        return redirect('success')
+    validate = ValidationCheck(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
+    if(validate):
+        success = do_purchase(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
+        if success:
+            return redirect('success')
+        else:
+            return redirect('error')
     else:
         return redirect('error')
+
+
+def ValidationCheck(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber):
+    if(email_address == None or firstName == None or lastName == None
+        or product_url == None or address == None or postcode == None 
+        or fullName == None or cardNumber == None or len(cvv) >= 4 or len(cvv) <= 2
+        or expiration == None or mobileNumber == None):
+        return False
+    else:
+        return True
+
 
 def purchase_view(request):
     if request.method == 'POST':
