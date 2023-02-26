@@ -15,24 +15,23 @@ def game_view(request):
     form = PurchaseForm()
     return render(request,'game.html', {'form': form})
 
-def execute_purchase_script(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber):
-
+def execute_purchase_script(request,title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber):
     validate = ValidationCheck(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
     if(validate):
         success = do_purchase(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
         if success:
             return redirect('success')
         else:
-            return redirect('error')
+            return render(request, 'error.html')
     else:
-        return redirect('error')
+        return render(request, 'error.html')
 
 
 def ValidationCheck(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber):
-    if(email_address == None or firstName == None or lastName == None
-        or product_url == None or address == None or postcode == None 
-        or fullName == None or cardNumber == None or len(cvv) >= 4 or len(cvv) <= 2
-        or expiration == None or mobileNumber == None):
+    if (email_address is None or firstName is None or lastName is None or
+        product_url is None or address is None or postcode is None or
+        fullName is None or cardNumber is None or title is None or len(cvv) >= 4 or len(cvv) <= 2 or
+        expiration is None or mobileNumber is None):
         return False
     else:
         return True
@@ -54,9 +53,9 @@ def purchase_view(request):
             cvv = form.cleaned_data['cvv']
             expiration = form.cleaned_data['expiration']
             mobileNumber = form.cleaned_data['mobileNumber']
-            
-            # Execute the script using the provided data
-            return execute_purchase_script(title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
+
+            # Pass the arguments directly to execute_purchase_script
+            return execute_purchase_script(request, title, email_address, firstName, lastName, product_url, address, postcode, fullName, cardNumber, cvv, expiration, mobileNumber)
     else:
         form = PurchaseForm()
     return render(request, 'purchase.html', {'form': form})
@@ -64,6 +63,7 @@ def purchase_view(request):
 
 def success_view(request):
     return render(request, 'success.html')
+
 
 def error_view(request):
     return render(request, 'error.html')
