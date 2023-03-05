@@ -1,10 +1,137 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Scalpture - Homepage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block content %}
-  <h1>Homepage</h1>
-  <form method="post" action="{% url 'gamestop:purchase' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-  </form>
-{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">   
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="menu">
+          <h3 class="logo">Scalp<span>ture</span></h3>
+          <div class="hamburger-menu">
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-container">
+        <video autoplay loop muted playsinline id="bg-video">
+          <source src="{% static 'videos/hogwarts.mp4' %}" type="video/mp4">
+        </video>   
+        <div class="main">
+          <header>
+            <div class="overlay">
+              <div class="inner">
+                <h2 class="mb-2">GAMESTOP.COM</h2>
+                <button type="button" class="btn btn-primary py-3 px-4" data-toggle="modal" data-target="#modal-container">
+                  LAUNCH GAMESTOP.COM SCRIPT
+                </button>                
+              </div>
+            </div>
+          </header>
+        </div>
+
+        <div class="shadow one"></div>
+        <div class="shadow two"></div>
+      </div>
+
+      <div class="links">
+        <ul class="nav-links">
+          <li>
+            <a href="/" style="--i: 0.05s;">Home</a>
+          </li>
+          <li>
+            <a href="#" style="--i: 0.25s;">About</a>
+          </li>
+          <li>
+            <a href="/script-services/" style="--i: 0.1s;">Script Services</a>
+          </li>
+          <li>
+            <a href="/signup/" style="--i: 0.3s;">VIP Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="ion-ios-close"></span>
+            </button>
+          </div>
+          <div class="row">
+            <div class="col-md mb-md-0 mb-5">
+              <div class="modal-body p-0">
+                <h3 class="mb-4">GAMESTOP.COM</h3>
+                <h5 class="mb-4">Enter all relevant information required by GameStop below</h5>
+                <form method="post" action="{% url 'gamestop:purchase' %}">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <input type="product_url" name="product_url" class="form-control" placeholder="Product URL" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="street_address" class="form-control" placeholder="Street Address" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="zip_code" class="form-control" placeholder="Zip Code" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="city" class="form-control" placeholder="City" required>
+                  </div>
+                  <select name="state" class="form-control" style="color: black;" required>
+                    <option value="">State</option>
+                    {% for value, label in form.state.field.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+                  <div class="form-group">
+                    <input type="text" name="email" class="form-control" placeholder="Email Address" required autofocus>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="phone_number" class="form-control" placeholder="Phone Number" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="card_number" class="form-control" placeholder="Card Number" maxlength="16" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="expiration-date" name="expiration_date" class="form-control" placeholder="Expiry(MM/YY)" maxlength="5" required>
+                    <span class="error-message" style="display: none;">Expiration date must be in the format MM/YY</span>
+                  </div>
+                  <div class="form-group">
+                    <input type="cvv" name="cvv" class="form-control" placeholder="CVV" maxlength="3" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Submit</button>
+                  </div>
+                </form>
+				      </div>
+				    </div>
+				    </div>
+				  </div>
+		    </div>
+		  </div>
+		</div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/hamburger.menu.js' %}"></script>
+  </body>
+</html>

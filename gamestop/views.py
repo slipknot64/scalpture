@@ -7,12 +7,12 @@ def gamestop_view(request):
     return render(request, 'gamestop.html', {'form': form})
 
 def execute_purchase_script(product_url, first_name, last_name, street_address, zip_code, city, state, email, phone_number, card_number, expiration_date, cvv):
-
     success = do_purchase(product_url, first_name, last_name, street_address, zip_code, city, state, email, phone_number, card_number, expiration_date, cvv)
     if success:
-        return redirect('success')
+        return redirect('gamestop:success')
     else:
-        return redirect('error')
+        return redirect('gamestop:error')
+
 
 def purchase_view(request):
     if request.method == 'POST':
